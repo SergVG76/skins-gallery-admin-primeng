@@ -1,27 +1,12 @@
 <p-toolbar>
   <div class="p-toolbar-group-left">
-    <p-button
-      icon="pi pi-plus"
-      (click)="addNew()"
-      label="Add new"
-      class="toolbtn"
-    ></p-button>
+    <p-button icon="pi pi-plus" (click)="addNew()" label="Add new" class="toolbtn"></p-button>
 
-    <p-button
-      icon="pi pi-pencil"
-      (click)="addNew()"
-      label="Edit"
-      class="toolbtn"
-      [disabled]="-1 == currentIndex"
-    ></p-button>
+    <p-button icon="pi pi-pencil" (click)="edit()" label="Edit" class="toolbtn" [disabled]="-1 == currentIndex">
+    </p-button>
 
-    <p-button
-      icon="pi pi-trash"
-      (click)="delete()"
-      label="Delete"
-      class="toolbtn"
-      [disabled]="-1 == currentIndex"
-    ></p-button>
+    <p-button icon="pi pi-trash" (click)="delete()" label="Delete" class="toolbtn" [disabled]="-1 == currentIndex">
+    </p-button>
   </div>
 
   <div class="p-toolbar-group-right">
@@ -34,22 +19,11 @@
         [(ngModel)]="name"
       />
     </span>
-    <p-button
-      icon="pi pi-check"
-      type="button"
-      (click)="searchByName()"
-      label="Apply"
-      class="toolbtn"
-    ></p-button>
+    <p-button icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" class="toolbtn"></p-button>
   </div>
 </p-toolbar>
 
-<p-dialog
-  [(visible)]="editDialog"
-  [style]="{width: '750px'}"
-  header="Skin Details"
-  [modal]="true" styleClass="p-fluid"
->
+<p-dialog [(visible)]="editDialog" [style]="{width: '750px'}" header="Skin Details" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content">
     <div class="p-field">
       <label for="name">Name</label>
@@ -62,8 +36,7 @@
         autofocus
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_NAME"
-        >Name is required.</small
-      >
+        >Name is required.</small>
     </div>
     <div class="p-field">
       <label for="fname">File name</label>
@@ -74,8 +47,7 @@
         [(ngModel)]="editSkin.SKIN_LINK"
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_LINK"
-        >File name is required.</small
-      >
+        >File name is required.</small>
     </div>
   </ng-template>
 
@@ -106,12 +78,8 @@
     <td>Link</td>
     <td>Date</td>
   </tr>
-  <tr
-    class="grid-row"
-    *ngFor="let skin of skins; let i = index"
-    [class.selected]="i == currentIndex"
-    (click)="setCurrentSkin(skin, i)"
-  >
+  <tr class="grid-row" *ngFor="let skin of skins; let i = index" [class.selected]="i == currentIndex"
+    (click)="setCurrentSkin(skin, i)">
     <td>{{ skin.ID }}</td>
     <td>{{ skin.SKIN_NAME }}</td>
     <td>{{ skin.SKIN_LINK }}</td>

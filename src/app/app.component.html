@@ -48,7 +48,7 @@
   [(visible)]="editDialog"
   [style]="{width: '750px'}"
   header="Skin Details"
-  [modal]="true"
+  [modal]="true" styleClass="p-fluid"
 >
   <ng-template pTemplate="content">
     <div class="p-field">
@@ -72,11 +72,9 @@
         pInputText
         id="fname"
         [(ngModel)]="editSkin.SKIN_LINK"
-        required
-        autofocus
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_LINK"
-        >Name is required.</small
+        >File name is required.</small
       >
     </div>
   </ng-template>

@@ -47,17 +47,15 @@ export class AppComponent implements OnInit {
     );
   }
 
-  refresh(): void {
-    this.readSkins();
-    this.currentSkin = null;
-    confirm("refresh");
-    this.currentIndex = -1;
+  addNew(): void {
+    this.editSkin = {};
+    this.editSkin.SKIN_NAME = "";
+    this.editDialog = true;
+    this.submitted = false;
   }
 
-  addNew(): void {
-//    newSkin: Skin;
-    this.editSkin = {};
-    this.editSkin.SKIN_NAME = "AA";
+  edit(): void {
+    this.editSkin = this.currentSkin;
     this.editDialog = true;
     this.submitted = false;
   }
@@ -95,4 +93,13 @@ export class AppComponent implements OnInit {
     this.editDialog = false;
     this.submitted = false;
   }
+
+  /*
+  refresh(): void {
+    this.readSkins();
+    this.currentSkin = null;
+    confirm("refresh");
+    this.currentIndex = -1;
+  }
+*/
 }

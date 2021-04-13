@@ -65,6 +65,20 @@
         >Name is required.</small
       >
     </div>
+    <div class="p-field">
+      <label for="fname">File name</label>
+      <input
+        type="text"
+        pInputText
+        id="fname"
+        [(ngModel)]="editSkin.SKIN_LINK"
+        required
+        autofocus
+      />
+      <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_LINK"
+        >Name is required.</small
+      >
+    </div>
   </ng-template>
 
   <ng-template pTemplate="footer">

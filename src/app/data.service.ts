@@ -35,7 +35,6 @@ export class DataService {
   }
 
   searchByName(name): Observable<Skin[]> {
-//    confirm(`${url}?name=${name}`);
     return this.http.get<Skin[]>(`${url}?name=${name}`);
   }
 }

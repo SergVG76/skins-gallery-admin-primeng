@@ -17,9 +17,9 @@ import { DataService, Skin } from "./data.service";
   ]
 })
 export class AppComponent implements OnInit {
-  skins: any;
+  skins: Skin[];
   currentSkin: Skin;
-  editSkin = {};
+  editSkin: Skin;
   currentIndex = -1;
   editDialog = false;
   submitted = false;
@@ -55,7 +55,9 @@ export class AppComponent implements OnInit {
   }
 
   addNew(): void {
+//    newSkin: Skin;
     this.editSkin = {};
+    this.editSkin.SKIN_NAME = "AA";
     this.editDialog = true;
     this.submitted = false;
   }

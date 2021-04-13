@@ -57,11 +57,11 @@
         type="text"
         pInputText
         id="name"
-        [(ngModel)]="currentSkin.SKIN_NAME"
+        [(ngModel)]="editSkin.SKIN_NAME"
         required
         autofocus
       />
-      <small class="p-invalid" *ngIf="submitted && !currentSkin.SKIN_NAME"
+      <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_NAME"
         >Name is required.</small
       >
     </div>

@@ -16,7 +16,6 @@ import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { MessageService } from 'primeng/api';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 
@@ -39,6 +38,6 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [MessageService, DataService]
+  providers: [DataService]
 })
 export class AppModule {}

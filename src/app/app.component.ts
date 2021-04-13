@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { Component, OnInit } from "@angular/core";
+import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin } from "./data.service";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.scss' ],
-    styles: [`
-        :host ::ng-deep .p-dialog .product-image {
-            width: 150px;
-            margin: 0 auto 2rem auto;
-            display: block;
-        }
-    `],
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+  styles: [
+    `
+      :host ::ng-deep .p-dialog .product-image {
+        width: 150px;
+        margin: 0 auto 2rem auto;
+        display: block;
+      }
+    `
+  ]
 })
-export class AppComponent implements OnInit { 
+export class AppComponent implements OnInit {
   skins: any;
   currentSkin = null;
   editSkin = {};
@@ -23,7 +25,10 @@ export class AppComponent implements OnInit {
   submitted = false;
   name = "";
 
-  constructor(private primengConfig: PrimeNGConfig, private dService: DataService) {}
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private dService: DataService
+  ) {}
 
   ngOnInit() {
     this.primengConfig.ripple = true;
@@ -73,7 +78,6 @@ export class AppComponent implements OnInit {
   }
 
   searchByName(): void {
-    //    confirm("Search "+this.name);
     this.dService.searchByName(this.name).subscribe(
       skins => {
         this.skins = skins;
@@ -83,16 +87,5 @@ export class AppComponent implements OnInit {
         console.log(error);
       }
     );
-  } /*
-  skins: Skin[];
-
-  ngOnskin{
-    this.dService.readAll().subscribe((skins: Skin[]) => {
-      this.skins = skins;
-      console.log(this.skins);
-    });
   }
-
-  constructor(private dService: DataService) {}
-*/
 }

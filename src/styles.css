@@ -21,3 +21,23 @@ td{padding: 0 0 1px 4px;}
   background-color: rgb(22, 115, 255);
   color: white;
 }
+
+.status-bar {
+  padding-top: 8px;
+  margin-top: 12px;
+}
+
+.grid-row {
+  cursor: default;
+}
+
+.toolbtn {
+  padding: 2px;
+}
+
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

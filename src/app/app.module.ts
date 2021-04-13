@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
-import { GridMainComponent } from "./grid-main/grid-main.component";
 import { DataService } from "./data.service";
 
 import {TableModule} from 'primeng/table';
@@ -38,7 +37,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     InputNumberModule,
     ToolbarModule
   ],
-  declarations: [AppComponent, GridMainComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [MessageService, DataService]
 })

@@ -1,0 +1,23 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Tahoma;
+}
+
+td{padding: 0 0 1px 4px;}
+
+.grid-header{background-color: rgb(235, 235, 235);}
+
+.status-bar {
+  background-color: rgba(190, 190, 190, 0.514);
+}
+
+.grid-row.selected {
+  background-color: rgb(94, 157, 252);
+  color: white;
+}
+
+.grid-row:active {
+  background-color: rgb(22, 115, 255);
+  color: white;
+}

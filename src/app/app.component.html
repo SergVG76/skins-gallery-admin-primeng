@@ -50,6 +50,23 @@
   header="Skin Details"
   [modal]="true"
 >
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        pInputText
+        id="name"
+        [(ngModel)]="currentSkin.SKIN_NAME"
+        required
+        autofocus
+      />
+      <small class="p-invalid" *ngIf="submitted && !currentSkin.SKIN_NAME"
+        >Name is required.</small
+      >
+    </div>
+  </ng-template>
+
   <ng-template pTemplate="footer">
     <button
       pButton

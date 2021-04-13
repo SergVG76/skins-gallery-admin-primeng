@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-export interface Skin {}
+export interface Skin {
+  SKIN_NAME: string;
+}
 
 const url = "https://www.alphaskins.com/bcknd_acdb/skins_table.php";
 

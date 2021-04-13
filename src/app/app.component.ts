@@ -18,7 +18,7 @@ import { DataService, Skin } from "./data.service";
 })
 export class AppComponent implements OnInit {
   skins: any;
-  currentSkin = null;
+  currentSkin: Skin;
   editSkin = {};
   currentIndex = -1;
   editDialog = false;

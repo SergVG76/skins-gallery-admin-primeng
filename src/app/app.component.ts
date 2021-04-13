@@ -65,8 +65,8 @@ export class AppComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  deleteAllskins(): void {
-    this.dService.deleteAll().subscribe(
+  delete(): void {
+    this.dService.delete(this.currentIndex).subscribe(
       response => {
         console.log(response);
         this.readSkins();
@@ -87,5 +87,10 @@ export class AppComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  hideDialog() {
+    this.editDialog = false;
+    this.submitted = false;
   }
 }

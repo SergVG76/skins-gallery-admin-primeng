@@ -8,17 +8,18 @@
     ></p-button>
 
     <p-button
-      icon="pi pi-search"
-      type="button"
-      (click)="searchByName()"
-      label="Search"
+      icon="pi pi-pencil"
+      (click)="addNew()"
+      label="Edit"
       class="toolbtn"
+      [disabled]="-1 == currentIndex"
     ></p-button>
 
     <p-button
-      (click)="deleteAllskins()"
-      label="Delete All"
+      (click)="delete()"
+      label="Delete"
       class="toolbtn"
+      [disabled]="-1 == currentIndex"
     ></p-button>
   </div>
 
@@ -32,6 +33,13 @@
         [(ngModel)]="name"
       />
     </span>
+    <p-button
+      icon="pi pi-check"
+      type="button"
+      (click)="searchByName()"
+      label="Apply"
+      class="toolbtn"
+    ></p-button>
   </div>
 </p-toolbar>
 

@@ -23,7 +23,7 @@
   </div>
 </p-toolbar>
 
-<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true" scrollHeight="800px" (onRowSelect)="OnSkinSelect($event)">
+<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true" scrollHeight="800px" (onRowSelect)="OnSkinSelect($event)" (onRowUnselect)="OnSkinUnselect($event)">
 
   <ng-template pTemplate="header">
     <tr>
@@ -51,22 +51,6 @@
   </ng-template>
 
 </p-table>
-
-<table width="100%">
-  <tr class="grid-header">
-    <td>ID</td>
-    <td>Name</td>
-    <td>Link</td>
-    <td>Date</td>
-  </tr>
-  <tr class="grid-row" *ngFor="let skin of skins; let i = index" [class.selected]="i == currentIndex"
-    (click)="setCurrentSkin(skin, i)">
-    <td>{{ skin.ID }}</td>
-    <td>{{ skin.SKIN_NAME }}</td>
-    <td>{{ skin.SKIN_LINK }}</td>
-    <td>{{ skin.LAST_DATE }}</td>
-  </tr>
-</table>
 
 <p-dialog [(visible)]="editDialog" [style]="{width: '750px'}" header="Skin Details" [modal]="true" styleClass="p-fluid">
   <ng-template pTemplate="content">

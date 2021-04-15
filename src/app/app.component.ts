@@ -6,13 +6,15 @@ import { DataService, Skin } from "./data.service";
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
-  styles: [`
+  styles: [
+    `
       :host ::ng-deep .p-dialog .product-image {
         width: 150px;
         margin: 0 auto 2rem auto;
         display: block;
       }
-  `]
+    `
+  ]
 })
 export class AppComponent implements OnInit {
   skins: Skin[];
@@ -33,8 +35,12 @@ export class AppComponent implements OnInit {
     this.readSkins();
   }
 
-  OnSkinSelect(){
-    confirm('OnSelect');
+  OnSkinSelect() {
+    this.currentIndex = this.currentSkin.ID;
+  }
+
+  OnSkinUnselect() {
+    this.currentIndex = -1;
   }
 
   readSkins(): void {

@@ -6,7 +6,7 @@ import { DataService, Skin } from "./data.service";
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  style: "./app.component.scss"
+  styles: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   skins: Skin[];

@@ -1,12 +1,14 @@
 <p-toolbar>
-  <div class="p-toolbar-group-left">
-    <p-button icon="pi pi-plus" (click)="addNew()" label="Add new" class="toolbtn"></p-button>
+  <div class="p-toolbar-group-left">  
+    <span class="p-buttonset">  
+    <button pButton icon="pi pi-plus" (click)="addNew()" label="Add new"></button>
 
-    <p-button icon="pi pi-pencil" (click)="edit()" label="Edit" class="toolbtn" [disabled]="-1 == currentIndex">
-    </p-button>
+    <button pButton icon="pi pi-pencil" (click)="edit()" label="Edit" class="toolbtn" [disabled]="-1 == currentIndex">
+    </button>
 
-    <p-button icon="pi pi-trash" (click)="delete()" label="Delete" class="toolbtn" [disabled]="-1 == currentIndex">
-    </p-button>
+    <button pButton icon="pi pi-trash" (click)="delete()" label="Delete" class="toolbtn" [disabled]="-1 == currentIndex">
+    </button>
+    </span>
   </div>
 
   <div class="p-toolbar-group-right">
@@ -23,19 +25,20 @@
   </div>
 </p-toolbar>
 
-<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true" scrollHeight="800px" (onRowSelect)="OnSkinSelect($event)" (onRowUnselect)="OnSkinUnselect($event)">
+<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
+  scrollHeight="800px" (onRowSelect)="OnSkinSelect($event)" (onRowUnselect)="OnSkinUnselect($event)"
+  styleClass="p-datatable-gridlines p-datatable-sm">
 
   <ng-template pTemplate="header">
     <tr>
-      <th pSortableColumn="SKIN_NAME">Name <p-sortIcon field="name"></p-sortIcon>
+      <th pSortableColumn="SKIN_NAME">Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
       </th>
-      <th pSortableColumn="SKIN_LINK">Link <p-sortIcon field="link"></p-sortIcon>
+      <th pSortableColumn="SKIN_LINK">Link <p-sortIcon field="SKIN_LINK"></p-sortIcon>
       </th>
-      <th pSortableColumn="LAST_DATE">Date <p-sortIcon field="date"></p-sortIcon>
+      <th pSortableColumn="LAST_DATE">Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
       </th>
-      <th pSortableColumn="RATING">Rating <p-sortIcon field="rating"></p-sortIcon>
+      <th pSortableColumn="RATING">Rating <p-sortIcon field="RATING"></p-sortIcon>
       </th>
-      <th></th>
     </tr>
   </ng-template>
 

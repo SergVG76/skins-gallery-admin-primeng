@@ -4,40 +4,21 @@ body {
   font-family: Tahoma;
 }
 
-td{padding: 0 0 1px 4px;}
-
-.grid-header{background-color: rgb(235, 235, 235);}
-
-.status-bar {
-  background-color: rgba(190, 190, 190, 0.514);
+input {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
 
-.grid-row.selected {
-  background-color: rgb(94, 157, 252);
-  color: white;
-}
-
-.grid-row:active {
-  background-color: rgb(22, 115, 255);
-  color: white;
-}
-
-.status-bar {
-  padding-top: 8px;
-  margin-top: 12px;
-}
-
-.grid-row {
+.p-button {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
   cursor: default;
 }
 
-.toolbtn {
-  padding: 2px;
+td, tr, th {
+  cursor: default;
 }
 
-.confirmation-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.p-toolbar {
+  padding: 6px;
 }
-

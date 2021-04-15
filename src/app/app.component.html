@@ -26,8 +26,8 @@
 </p-toolbar>
 
 <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
-  scrollHeight="800px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
-  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm">
+  scrollHeight="900px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
+  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm" >
 
   <ng-template pTemplate="header">
     <tr>

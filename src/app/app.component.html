@@ -65,14 +65,14 @@
       <th pSortableColumn="SKIN_NAME">
         Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
       </th>
-      <th pSortableColumn="SKIN_LINK">
+      <th pSortableColumn="SKIN_LINK" style="width: 200px">
         Download <p-sortIcon field="SKIN_LINK"></p-sortIcon>
       </th>
-      <th pSortableColumn="LAST_DATE">
+      <th pSortableColumn="LAST_DATE" style="width: 120px">
         Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
       </th>
-      <th pSortableColumn="BUY1">Buy <p-sortIcon field="BUY1"></p-sortIcon></th>
-      <th pSortableColumn="RATING">
+      <th pSortableColumn="BUY1" style="width: 100px">Buy <p-sortIcon field="BUY1"></p-sortIcon></th>
+      <th pSortableColumn="RATING" style="width: 280px">
         Rating <p-sortIcon field="RATING"></p-sortIcon>
       </th>
     </tr>
@@ -81,16 +81,16 @@
   <ng-template pTemplate="body" let-skin>
     <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
       <td>{{skin.SKIN_NAME}}</td>
-      <td>
-        <a href="{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
+      <td style="width: 200px">
+        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
       </td>
-      <td>{{skin.LAST_DATE}}</td>
-      <td>
+      <td style="width: 120px">{{skin.LAST_DATE}}</td>
+      <td style="width: 100px">
         <a href="{{skin.BUY1}}" *ngIf="skin.BUY1">
           <i class="pi pi-shopping-cart"></i>
         </a>
       </td>
-      <td>
+      <td style="width: 280px">
         <p-rating
           [ngModel]="skin.RATING"
           stars="10"
@@ -103,11 +103,11 @@
 </p-table>
 
 <p-dialog
-  [(visible)]="editDialog"
-  [style]="{width: '750px'}"
-  [modal]="true"
   header="Skin Details"
   styleClass="p-fluid"
+  [(visible)]="editDialog"
+  [style]="{width: '400px'}"
+  [modal]="true"
 >
   <ng-template pTemplate="content">
     <div class="p-field">

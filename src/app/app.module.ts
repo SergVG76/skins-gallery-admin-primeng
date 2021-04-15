@@ -9,7 +9,7 @@ import { DataService } from "./data.service";
 
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
-import { RatingModule } from "primeng/rating";
+import { RatingModule } from "ng-starrating";
 import { RadioButtonModule } from "primeng/radiobutton";
 import { DialogModule } from "primeng/dialog";
 import { ButtonModule } from "primeng/button";
@@ -18,6 +18,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { ToolbarModule } from "primeng/toolbar";
 import { InputNumberModule } from "primeng/inputnumber";
 import { DynamicDialogModule } from "primeng/dynamicdialog";
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { DynamicDialogModule } from "primeng/dynamicdialog";
     RatingModule,
     RadioButtonModule,
     InputNumberModule,
+    CheckboxModule,
     ToolbarModule
   ],
   declarations: [AppComponent],

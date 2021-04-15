@@ -22,10 +22,3 @@ td, tr, th {
 .p-toolbar {
   padding: 6px;
 }
-
-:host ::ng-deep {
-
-.p-datatable-scrollable-wrapper, .p-datatable-scrollable-view {
-min-height: 0;
-}
-}

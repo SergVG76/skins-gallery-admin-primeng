@@ -1,10 +1,12 @@
+import { style } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin } from "./data.service";
 
 @Component({
   selector: "my-app",
-  templateUrl: "./app.component.html"
+  templateUrl: "./app.component.html",
+  style: "./app.component.scss"
 })
 export class AppComponent implements OnInit {
   skins: Skin[];

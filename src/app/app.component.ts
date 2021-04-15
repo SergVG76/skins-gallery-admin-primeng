@@ -4,7 +4,7 @@ import { DataService, Skin } from "./data.service";
 
 @Component({
   selector: "my-app",
-  templateUrl: "./app.component.html",
+  templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
   skins: Skin[];
@@ -25,12 +25,17 @@ export class AppComponent implements OnInit {
     this.readSkins();
   }
 
-  OnSkinSelect() {
+  onSkinSelect() {
     this.currentIndex = this.currentSkin.ID;
   }
 
-  OnSkinUnselect() {
+  onSkinUnselect() {
     this.currentIndex = -1;
+  }
+
+  onSkinDblClick($eevnt, skin) {
+    this.setCurrentSkin(skin, skin.ID);
+    this.edit();
   }
 
   readSkins(): void {

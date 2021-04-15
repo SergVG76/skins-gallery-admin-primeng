@@ -1,6 +1,6 @@
 <p-toolbar>
-  <div class="p-toolbar-group-left">  
-    <span class="p-buttonset">  
+  <div class="p-toolbar-group-left">
+    <span class="p-buttonset">
     <button pButton icon="pi pi-plus" (click)="addNew()" label="Add new"></button>
 
     <button pButton icon="pi pi-pencil" (click)="edit()" label="Edit" class="toolbtn" [disabled]="-1 == currentIndex">
@@ -26,8 +26,8 @@
 </p-toolbar>
 
 <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
-  scrollHeight="800px" (onRowSelect)="OnSkinSelect($event)" (onRowUnselect)="OnSkinUnselect($event)"
-  styleClass="p-datatable-gridlines p-datatable-sm">
+  scrollHeight="800px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
+  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm">
 
   <ng-template pTemplate="header">
     <tr>
@@ -43,7 +43,7 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-skin>
-    <tr [pSelectableRow]="skin">
+    <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
       <td>{{skin.SKIN_NAME}}</td>
       <td>{{skin.SKIN_LINK}}</td>
       <td>{{skin.LAST_DATE}}</td>

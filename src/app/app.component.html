@@ -71,6 +71,7 @@
       <th pSortableColumn="LAST_DATE">
         Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
       </th>
+      <th pSortableColumn="BUY1">Buy <p-sortIcon field="BUY1"></p-sortIcon></th>
       <th pSortableColumn="RATING">
         Rating <p-sortIcon field="RATING"></p-sortIcon>
       </th>
@@ -80,8 +81,15 @@
   <ng-template pTemplate="body" let-skin>
     <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
       <td>{{skin.SKIN_NAME}}</td>
-      <td><a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a></td>
+      <td>
+        <a href="{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
+      </td>
       <td>{{skin.LAST_DATE}}</td>
+      <td>
+        <a href="{{skin.BUY1}}" *ngIf="skin.BUY1">
+          <i class="pi pi-shopping-cart"></i>
+        </a>
+      </td>
       <td>
         <p-rating
           [ngModel]="skin.RATING"
@@ -97,8 +105,8 @@
 <p-dialog
   [(visible)]="editDialog"
   [style]="{width: '750px'}"
-  header="Skin Details"
   [modal]="true"
+  header="Skin Details"
   styleClass="p-fluid"
 >
   <ng-template pTemplate="content">
@@ -106,8 +114,7 @@
       <label for="name">Name</label>
       <input
         type="text"
-        pInputText
-        id="name"
+        pInputTextid="name"
         [(ngModel)]="editSkin.SKIN_NAME"
         required
         autofocus

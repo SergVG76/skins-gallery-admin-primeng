@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
     this.readSkins();
   }
 
+  OnSkinSelect(){
+    confirm('OnSelect');
+  }
+
   readSkins(): void {
     this.dService.readAll().subscribe(
       skins => {

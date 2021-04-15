@@ -71,7 +71,9 @@
       <th pSortableColumn="LAST_DATE" style="width: 120px">
         Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
       </th>
-      <th pSortableColumn="BUY1" style="width: 100px">Buy <p-sortIcon field="BUY1"></p-sortIcon></th>
+      <th pSortableColumn="BUY1" style="width: 100px">
+        Buy <p-sortIcon field="BUY1"></p-sortIcon>
+      </th>
       <th pSortableColumn="RATING" style="width: 280px">
         Rating <p-sortIcon field="RATING"></p-sortIcon>
       </th>
@@ -82,7 +84,9 @@
     <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
       <td>{{skin.SKIN_NAME}}</td>
       <td style="width: 200px">
-        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
+        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}"
+          >{{skin.SKIN_LINK}}</a
+        >
       </td>
       <td style="width: 120px">{{skin.LAST_DATE}}</td>
       <td style="width: 100px">
@@ -90,12 +94,13 @@
           <i class="pi pi-shopping-cart"></i>
         </a>
       </td>
-      <td style="width: 280px">
+      <td style="width: 280px; font-size: 8px !important;">
         <p-rating
           [ngModel]="skin.RATING"
           stars="10"
           [readonly]="true"
           [cancel]="false"
+          style="font-size: 8px !important"
         ></p-rating>
       </td>
     </tr>
@@ -114,7 +119,7 @@
       <label for="name">Name</label>
       <input
         type="text"
-        pInputTextid="name"
+        pInputText="name"
         [(ngModel)]="editSkin.SKIN_NAME"
         required
         autofocus

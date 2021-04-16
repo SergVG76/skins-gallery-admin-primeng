@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
     this.currentIndex = this.currentSkin.ID;
   }
 
+  onChangeInRating($event) {
+    this.editSkin.IN_RATING = this.editSkin.IN_RATING == 1 ? 0 : 1;
+  }
+
   onSkinUnselect() {
     this.currentIndex = -1;
   }
@@ -56,13 +60,14 @@ export class AppComponent implements OnInit {
 
   addNew(): void {
     this.editSkin = {};
-    this.editSkin.SKIN_NAME = "";
+    //    this.editSkin.SKIN_NAME = "";
     this.editDialog = true;
     this.submitted = false;
   }
 
   edit(): void {
-    this.editSkin = this.currentSkin;
+    this.editSkin = Object.assign({}, this.currentSkin);
+    //    confirm(this.editSkin.IN_RATING);
     this.editDialog = true;
     this.submitted = false;
   }
@@ -77,6 +82,15 @@ export class AppComponent implements OnInit {
       this.dService.create(this.editSkin);
     } else {
       confirm(this.editSkin.IN_RATING);
+
+      if (this.editSkin.IN_RATING == true) this.editSkin.IN_RATING = "1";
+      else if (this.editSkin.IN_RATING == false) {
+        this.editSkin.IN_RATING = "0";
+      }
+      confirm(this.editSkin.IN_RATING);
+
+      const ndx = this.skins.indexOf(this.currentSkin);
+      this.skins[ndx] = Object.assign({}, this.editSkin);
       this.dService.update(this.editSkin).subscribe(
         response => {
           console.log(response);

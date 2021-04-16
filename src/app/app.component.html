@@ -139,8 +139,13 @@
         >File name is required.</small>
     </div>
     <div class="p-field">
-      <p-checkbox name="inrating" [(ngModel)]="editSkin.IN_RATING" [binary]="editSkin.IN_RATING==1"
-        label="Published in gallery"></p-checkbox>
+      <p-checkbox name="inrating" [ngModel]="editSkin.IN_RATING==1" value='1' label="Published in gallery" [binary]=true
+        (onChange)="editSkin.IN_RATING = editSkin.IN_RATING == 1 ? 0 : 1">
+      </p-checkbox>
+
+      <!--p-checkbox name="inrating" [ngModel]="editSkin.IN_RATING==1" value='1' label="Published in gallery" [binary]=true
+        (onChange)="onChangeInRating($event)">
+      </p-checkbox-->
     </div>
     <div class="p-field">
       <label for="snum">Unique number: &nbsp; </label>

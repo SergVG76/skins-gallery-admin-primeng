@@ -60,7 +60,9 @@ export class AppComponent implements OnInit {
 
   addNew(): void {
     this.editSkin = {};
-    //    this.editSkin.SKIN_NAME = "";
+    this.editSkin.SKIN_NAME = "";
+    this.editSkin.SKIN_LINK = "";
+    this.editSkin.AUTHOR = "";
     this.editDialog = true;
     this.submitted = false;
   }

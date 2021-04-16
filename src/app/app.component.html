@@ -108,11 +108,8 @@
         pInputText
         id="name"
         [(ngModel)]="editSkin.SKIN_NAME"
-        required
         autofocus
       />
-      <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_NAME"
-        >Name is required.</small>
     </div>
     <div class="p-field">
       <label for="author">Author</label>
@@ -121,10 +118,7 @@
         pInputText
         id="author"
         [(ngModel)]="editSkin.AUTHOR"
-        required
       />
-      <small class="p-invalid" *ngIf="submitted && !editSkin.AUTHOR"
-        >Name is required.</small>
     </div>
     <div class="p-field">
       <label for="fname">File name</label>
@@ -133,10 +127,7 @@
         pInputText
         id="fname"
         [(ngModel)]="editSkin.SKIN_LINK"
-        required
       />
-      <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_LINK"
-        >File name is required.</small>
     </div>
     <div class="p-field">
       <p-checkbox name="inrating" [ngModel]="editSkin.IN_RATING==1" value='1' label="Published in gallery" [binary]=true
@@ -164,6 +155,7 @@
       label="Save"
       icon="pi pi-check"
       class="p-button-success"
+      [disabled]="(editSkin.SKIN_NAME=='')||(editSkin.SKIN_LINK=='')||(editSkin.AUTHOR=='')"
       (click)="saveSkin()"
     ></button>
   </ng-template>

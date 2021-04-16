@@ -21,11 +21,13 @@ export class DataService {
   }
 
   create(data): Observable<any> {
+    confirm(url + " create:" + data.SKIN_NAME);
     return this.http.post(url, data);
   }
 
-  update(id, data): Observable<any> {
-    return this.http.put(`${url}/${id}`, data);
+  update(data): Observable<any> {
+    //    confirm(url + " update:" + data.SKIN_NAME);
+    return this.http.put(url, data);
   }
 
   delete(id): Observable<any> {

@@ -72,6 +72,23 @@ export class AppComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  saveSkin(): void {
+    if (this.editSkin.ID == -1) {
+      this.dService.create(this.editSkin);
+    } else {
+      confirm(this.editSkin.IN_RATING);
+      this.dService.update(this.editSkin).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    this.hideDialog();
+  }
+
   delete(): void {
     this.confService.confirm({
       message: "Delete the `" + this.currentSkin.SKIN_NAME + "` skin?",
@@ -95,24 +112,6 @@ export class AppComponent implements OnInit {
       },
       reject: () => {}
     });
-    /*
-    if (confirm("Delete " + this.currentSkin.SKIN_NAME + "?")) {
-      const ndx: number = this.skins.indexOf(this.currentSkin);
-      const id: number = this.currentSkin.ID;
-      if (ndx !== -1) this.skins.splice(ndx, 1);
-
-      this.currentSkin = this.skins[ndx];
-
-      this.dService.delete(id).subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }
-*/
   }
 
   searchByName(): void {

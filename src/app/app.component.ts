@@ -81,14 +81,6 @@ export class AppComponent implements OnInit {
     if (this.editSkin.ID == -1) {
       this.dService.create(this.editSkin);
     } else {
-      confirm(this.editSkin.IN_RATING);
-
-      if (this.editSkin.IN_RATING == true) this.editSkin.IN_RATING = "1";
-      else if (this.editSkin.IN_RATING == false) {
-        this.editSkin.IN_RATING = "0";
-      }
-      confirm(this.editSkin.IN_RATING);
-
       const ndx = this.skins.indexOf(this.currentSkin);
       this.skins[ndx] = Object.assign({}, this.editSkin);
       this.dService.update(this.editSkin).subscribe(

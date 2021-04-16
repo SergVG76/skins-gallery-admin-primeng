@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { DataService } from "./data.service";
 
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
 import { RatingModule } from "ng-starrating";
@@ -18,7 +19,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { ToolbarModule } from "primeng/toolbar";
 import { InputNumberModule } from "primeng/inputnumber";
 import { DynamicDialogModule } from "primeng/dynamicdialog";
-import {CheckboxModule} from 'primeng/checkbox';
+import { CheckboxModule } from "primeng/checkbox";
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     RadioButtonModule,
     InputNumberModule,
     CheckboxModule,
-    ToolbarModule
+    ToolbarModule,
+    ConfirmDialogModule
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

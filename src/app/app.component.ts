@@ -2,10 +2,12 @@ import { style } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin } from "./data.service";
+import { ConfirmationService } from "primeng/api";
 
 @Component({
   selector: "my-app",
-  templateUrl: "./app.component.html"
+  templateUrl: "./app.component.html",
+  providers: [ConfirmationService]
 })
 export class AppComponent implements OnInit {
   skins: Skin[];
@@ -18,7 +20,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private dService: DataService
+    private dService: DataService,
+    private confService: ConfirmationService
   ) {}
 
   ngOnInit() {
@@ -70,15 +73,46 @@ export class AppComponent implements OnInit {
   }
 
   delete(): void {
-    this.dService.delete(this.currentIndex).subscribe(
-      response => {
-        console.log(response);
-        this.readSkins();
+    this.confService.confirm({
+      message: "Delete the `" + this.currentSkin.SKIN_NAME + "` skin?",
+      header: "Confirmation",
+      icon: "pi pi-question-circle",
+      accept: () => {
+        const ndx: number = this.skins.indexOf(this.currentSkin);
+        const id: number = this.currentSkin.ID;
+        if (ndx !== -1) this.skins.splice(ndx, 1);
+
+        this.currentSkin = this.skins[ndx];
+
+        this.dService.delete(id).subscribe(
+          response => {
+            console.log(response);
+          },
+          error => {
+            console.log(error);
+          }
+        );
       },
-      error => {
-        console.log(error);
-      }
-    );
+      reject: () => {}
+    });
+    /*
+    if (confirm("Delete " + this.currentSkin.SKIN_NAME + "?")) {
+      const ndx: number = this.skins.indexOf(this.currentSkin);
+      const id: number = this.currentSkin.ID;
+      if (ndx !== -1) this.skins.splice(ndx, 1);
+
+      this.currentSkin = this.skins[ndx];
+
+      this.dService.delete(id).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+*/
   }
 
   searchByName(): void {

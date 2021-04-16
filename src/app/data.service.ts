@@ -29,7 +29,7 @@ export class DataService {
   }
 
   delete(id): Observable<any> {
-    return this.http.delete(`${url}/${id}`);
+    return this.http.delete(`${url}?id=${id}`);
   }
 
   deleteAll(): Observable<any> {

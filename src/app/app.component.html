@@ -38,28 +38,13 @@
         [(ngModel)]="name"
       />
     </span>
-    <p-button
-      icon="pi pi-check"
-      type="button"
-      (click)="searchByName()"
-      label="Apply"
-      class="toolbtn"
-    ></p-button>
+    <p-button icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" class="toolbtn"></p-button>
   </div>
 </p-toolbar>
 
-<p-table
-  [value]="skins"
-  selectionMode="single"
-  [(selection)]="currentSkin"
-  dataKey="ID"
-  [scrollable]="true"
-  scrollHeight="800px"
-  (onRowSelect)="onSkinSelect($event)"
-  (onRowUnselect)="onSkinUnselect($event)"
-  (onRowDblclick)="onSkinDblClick($event)"
-  styleClass="p-datatable-gridlines p-datatable-sm"
->
+<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
+  scrollHeight="800px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
+  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm">
   <ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="SKIN_NAME">
@@ -95,9 +80,7 @@
       <td style="width: 120px">{{skin.LAST_DATE}}</td>
       <td style="width: 200px">{{skin.AUTHOR}}</td>
       <td style="width: 200px">
-        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}"
-          >{{skin.SKIN_LINK}}</a
-        >
+        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
       </td>
       <td style="width: 80px; text-align: center;">
         <a href="{{skin.BUY1}}" *ngIf="skin.BUY1">
@@ -105,13 +88,8 @@
         </a>
       </td>
       <td style="white-space: nowrap; width: 100px;">
-        <star-rating
-          [value]='skin.RATING/2'
-          checkedcolor='var(--yellow-600)'
-          uncheckedcolor='var(--bluegray-200)'
-          size="16px"
-          readonly="true"
-        ></star-rating>
+        <star-rating [value]='skin.RATING/2' checkedcolor='var(--yellow-600)' uncheckedcolor='var(--bluegray-200)'
+          size="16px" readonly="true"></star-rating>
       </td>
       <td style="width: 100px; text-align: center;">
         <i class="pi pi-check" *ngIf="skin.IN_RATING==1"></i>
@@ -121,13 +99,7 @@
   </ng-template>
 </p-table>
 
-<p-dialog
-  header="Skin Details"
-  styleClass="p-fluid"
-  [(visible)]="editDialog"
-  [style]="{width: '400px'}"
-  [modal]="true"
->
+<p-dialog header="Skin Details" styleClass="p-fluid" [(visible)]="editDialog" [style]="{width: '400px'}" [modal]="true">
   <ng-template pTemplate="content">
     <div class="p-field">
       <label for="name">Name</label>
@@ -140,8 +112,7 @@
         autofocus
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_NAME"
-        >Name is required.</small
-      >
+        >Name is required.</small>
     </div>
     <div class="p-field">
       <label for="author">Author</label>
@@ -153,8 +124,7 @@
         required
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.AUTHOR"
-        >Name is required.</small
-      >
+        >Name is required.</small>
     </div>
     <div class="p-field">
       <label for="fname">File name</label>
@@ -166,16 +136,11 @@
         required
       />
       <small class="p-invalid" *ngIf="submitted && !editSkin.SKIN_LINK"
-        >File name is required.</small
-      >
+        >File name is required.</small>
     </div>
     <div class="p-field">
-      <p-checkbox
-        name="inrating"
-        [(ngModel)]="editSkin.IN_RATING"
-        [binary]="editSkin.IN_RATING==1"
-        label="Published in gallery"
-      ></p-checkbox>
+      <p-checkbox name="inrating" [(ngModel)]="editSkin.IN_RATING" [binary]="editSkin.IN_RATING==1"
+        label="Published in gallery"></p-checkbox>
     </div>
     <div class="p-field">
       <label for="snum">Unique number: &nbsp; </label>
@@ -202,3 +167,6 @@
     ></button>
   </ng-template>
 </p-dialog>
+
+<p-confirmDialog [style]="{width: '30em'}" acceptIcon="pi pi-thumbs-down" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>

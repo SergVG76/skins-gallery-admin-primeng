@@ -20,6 +20,7 @@ import { ToolbarModule } from "primeng/toolbar";
 import { InputNumberModule } from "primeng/inputnumber";
 import { DynamicDialogModule } from "primeng/dynamicdialog";
 import { CheckboxModule } from "primeng/checkbox";
+import { FileUploadModule } from "primeng/fileupload";
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { CheckboxModule } from "primeng/checkbox";
     InputNumberModule,
     CheckboxModule,
     ToolbarModule,
+    FileUploadModule,
     ConfirmDialogModule
   ],
   declarations: [AppComponent],

@@ -1,7 +1,7 @@
 import { style } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
-import { DataService, Skin } from "./data.service";
+import { DataService, Skin, Author } from "./data.service";
 import { ConfirmationService } from "primeng/api";
 
 @Component({
@@ -10,13 +10,16 @@ import { ConfirmationService } from "primeng/api";
   providers: [ConfirmationService]
 })
 export class AppComponent implements OnInit {
+  maxNum = 0;
+  name = "";
+
   skins: Skin[];
+  authors: Author[];
   currentSkin: Skin;
   editSkin: Skin;
   currentIndex = -1;
   editDialog = false;
   submitted = false;
-  name = "";
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -26,6 +29,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
+    this.maxNum = this.dService.getMaxNum();
     this.readSkins();
   }
 

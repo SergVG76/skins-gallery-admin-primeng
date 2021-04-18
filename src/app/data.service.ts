@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-export interface Skin {
-  SKIN_NAME?: string;
-}
+export interface Skin {}
+
+export interface Author {}
 
 const url = "https://www.alphaskins.com/bcknd_acdb/skins_table.php";
+const urlutils = "https://www.alphaskins.com/bcknd_acdb/skins_utils.php";
 
 @Injectable()
 export class DataService {
@@ -40,5 +41,9 @@ export class DataService {
 
   searchByName(name): Observable<Skin[]> {
     return this.http.get<Skin[]>(`${url}?name=${name}`);
+  }
+
+  getMaxNum() {
+    return this.http.get(urlutils);
   }
 }

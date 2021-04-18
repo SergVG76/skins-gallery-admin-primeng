@@ -10,7 +10,7 @@ import { ConfirmationService } from "primeng/api";
   providers: [ConfirmationService]
 })
 export class AppComponent implements OnInit {
-  maxNum = 0;
+  maxNum: -1;
   name = "";
 
   skins: Skin[];
@@ -29,7 +29,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
-    this.maxNum = this.dService.getMaxNum();
+    //    this.maxNum = 4;
+    //    this.maxNum = this.dService.getMaxNum();
+    this.dService.getMaxNum().subscribe(data => (this.maxNum = data));
+    //    confirm(this.maxNum);
     this.readSkins();
   }
 
@@ -67,6 +70,7 @@ export class AppComponent implements OnInit {
     this.editSkin.SKIN_NAME = "";
     this.editSkin.SKIN_LINK = "";
     this.editSkin.AUTHOR = "";
+    this.editSkin.SKIN_NUM = this.maxNum;
     this.editDialog = true;
     this.submitted = false;
   }

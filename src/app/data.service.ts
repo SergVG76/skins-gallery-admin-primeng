@@ -43,7 +43,7 @@ export class DataService {
     return this.http.get<Skin[]>(`${url}?name=${name}`);
   }
 
-  getMaxNum() {
-    return this.http.get(urlutils);
+  getMaxNum(): Observable<any> {
+    return this.http.get(`${urlutils}?action=maxnum`);
   }
 }

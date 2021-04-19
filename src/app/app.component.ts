@@ -174,7 +174,7 @@ export class AppComponent implements OnInit {
     this.dService.searchByName(this.name).subscribe(
       skins => {
         this.skins = skins;
-        console.log(skins);
+        console.log(skins);!
       },
       error => {
         console.log(error);

@@ -22,7 +22,7 @@ export class DataService {
   }
 
   create(data): Observable<any> {
-    confirm(url + " create:" + data.SKIN_NAME);
+    //    confirm(url + " create:" + data.SKIN_NAME);
     return this.http.post(url, data);
   }
 

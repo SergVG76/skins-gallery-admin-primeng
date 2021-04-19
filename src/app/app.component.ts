@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin, Author } from "./data.service";
 import { ConfirmationService } from "primeng/api";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "my-app",
@@ -29,10 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
-    //    this.maxNum = 4;
-    //    this.maxNum = this.dService.getMaxNum();
     this.dService.getMaxNum().subscribe(data => (this.maxNum = data));
-    //    confirm(this.maxNum);
     this.readSkins();
   }
 
@@ -67,17 +65,19 @@ export class AppComponent implements OnInit {
 
   addNew(): void {
     this.editSkin = {};
+    this.editSkin.ID = -1;
+    this.editSkin.LAST_DATE = formatDate(new Date(), "yyyy-MM-dd", "en");
     this.editSkin.SKIN_NAME = "";
     this.editSkin.SKIN_LINK = "";
     this.editSkin.AUTHOR = "";
     this.editSkin.SKIN_NUM = this.maxNum;
+    this.editSkin.IN_RATING = true;
     this.editDialog = true;
     this.submitted = false;
   }
 
   edit(): void {
     this.editSkin = Object.assign({}, this.currentSkin);
-    //    confirm(this.editSkin.IN_RATING);
     this.editDialog = true;
     this.submitted = false;
   }
@@ -89,8 +89,27 @@ export class AppComponent implements OnInit {
 
   saveSkin(): void {
     if (this.editSkin.ID == -1) {
+      // New
       this.dService.create(this.editSkin);
+      const ndx = this.skins.length;
+      this.skins.push({}); // = Object.assign({}, this.editSkin);
+      this.skins[ndx] = Object.assign({}, this.editSkin);
+      this.maxNum++;
+
+      this.currentSkin = this.skins[ndx];
+
+      /*
+      this.dService.update(this.editSkin).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+*/
     } else {
+      confirm("Update");
       const ndx = this.skins.indexOf(this.currentSkin);
       this.skins[ndx] = Object.assign({}, this.editSkin);
       this.dService.update(this.editSkin).subscribe(

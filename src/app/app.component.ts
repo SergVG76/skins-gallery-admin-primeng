@@ -1,9 +1,16 @@
-import { style } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+//import { style } from "@angular/animations";
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnInit
+} from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin, Author } from "./data.service";
 import { ConfirmationService } from "primeng/api";
 import { formatDate } from "@angular/common";
+import { Table } from "primeng/table";
 
 @Component({
   selector: "my-app",
@@ -22,6 +29,7 @@ export class AppComponent implements OnInit {
   currentIndex = -1;
   editDialog = false;
   submitted = false;
+  @ViewChild("mainGrid") mainGrid: Table;
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -104,23 +112,24 @@ export class AppComponent implements OnInit {
       // New
       this.dService.create(this.editSkin);
       const ndx = this.skins.length;
-      this.skins.push({}); // = Object.assign({}, this.editSkin);
-      this.skins[ndx] = Object.assign({}, this.editSkin);
-      this.maxNum++;
+      let newSkin = {};
+      Object.assign(newSkin, this.editSkin);
+      this.skins.push(newSkin);
+      this.mainGrid.clear();
 
-      this.currentSkin = this.skins[ndx];
+      this.mainGrid.scrollToVirtualIndex(ndx); // Quick scroll to added row
 
-      //    this.dService.getMaxNum().subscribe(data => (this.maxNum = data + 1));
       this.dService.create(this.editSkin).subscribe(
         response => {
           this.skins[ndx].ID = response;
-          this.currentIndex = this.skins[ndx].ID;
-          console.log(response);
+          this.setCurrentSkin(this.skins[ndx], this.skins[ndx].ID);
+          console.log("New ID: " + response + ", new grid index: " + ndx);
         },
         error => {
           console.log(error);
         }
       );
+      this.maxNum++;
     } else {
       const ndx = this.skins.indexOf(this.currentSkin);
       this.skins[ndx] = Object.assign({}, this.editSkin);

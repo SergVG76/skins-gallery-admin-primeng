@@ -25,6 +25,8 @@
         class="toolbtn"
         [disabled]="-1 == currentIndex"
       ></button>
+      <label for="sID"> Current ID: &nbsp; </label>
+      <label id="sID"> {{currentIndex}}</label>
     </span>
   </div>
 
@@ -44,7 +46,8 @@
 
 <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
   scrollHeight="800px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
-  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm">
+  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm" #mainGrid
+  virtualScroll="true">
   <ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="SKIN_NAME">

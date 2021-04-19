@@ -112,7 +112,15 @@
             id="name"
             [(ngModel)]="editSkin.SKIN_NAME"
             autofocus
+            (keyup.enter)="enterKeyUp()"
           />
+        </div>
+        <div class="p-field p-col">
+          <label for="author">Author</label>
+          <p-dropdown id="author" [(ngModel)]="editSkin.AUTHOR" [options]="authors" optionLabel="AUTHORS"
+            optionValue="AUTHORS" [showClear]="editSkin.AUTHOR != ''" editable="true" appendTo="body"
+            [styleClass]="dlg-input">
+          </p-dropdown>
         </div>
         <div class="p-field p-col">
           <label for="fname">File name</label>
@@ -121,13 +129,8 @@
             pInputText
             id="fname"
             [(ngModel)]="editSkin.SKIN_LINK"
+            (keyup.enter)="enterKeyUp()"
           />
-        </div>
-        <div class="p-field p-col">
-          <label for="author">Author</label>
-          <p-dropdown id="author" [(ngModel)]="editSkin.AUTHOR" [options]="authors" optionLabel="AUTHORS"
-            optionValue="AUTHORS" [showClear]="editSkin.AUTHOR != ''" editable="true" baseZIndex=10000 appendTo="body">
-          </p-dropdown>
         </div>
       </div>
     </div>

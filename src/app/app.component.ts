@@ -11,8 +11,9 @@ import { formatDate } from "@angular/common";
   providers: [ConfirmationService]
 })
 export class AppComponent implements OnInit {
-  maxNum: -1;
+  maxNum = -1;
   name = "";
+  droppedDown = false;
 
   skins: Skin[];
   authors: Author[];
@@ -109,8 +110,11 @@ export class AppComponent implements OnInit {
 
       this.currentSkin = this.skins[ndx];
 
+      //    this.dService.getMaxNum().subscribe(data => (this.maxNum = data + 1));
       this.dService.create(this.editSkin).subscribe(
         response => {
+          this.skins[ndx].ID = response;
+          this.currentIndex = this.skins[ndx].ID;
           console.log(response);
         },
         error => {
@@ -118,7 +122,6 @@ export class AppComponent implements OnInit {
         }
       );
     } else {
-      confirm("Update");
       const ndx = this.skins.indexOf(this.currentSkin);
       this.skins[ndx] = Object.assign({}, this.editSkin);
       this.dService.update(this.editSkin).subscribe(
@@ -176,11 +179,18 @@ export class AppComponent implements OnInit {
   }
 
   /*
-  refresh(): void {
-    this.readSkins();
-    this.currentSkin = null;
-    confirm("refresh");
-    this.currentIndex = -1;
+  changeDropped(value) {
+    this.droppedDown = value;
+    console.log("droppedDown: " + value);
   }
 */
+
+  enterKeyUp(event) {
+    if (
+      this.editSkin.SKIN_NAME != "" &&
+      this.editSkin.SKIN_LINK != "" &&
+      this.editSkin.SKIN_AUTHOR != ""
+    )
+      this.saveSkin();
+  }
 }

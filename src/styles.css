@@ -5,7 +5,9 @@ body {
 }
 
 input,
-.p-dropdown {
+.p-dropdown,
+p-dropdown,
+.dlg-input {
   padding-top: 4px !important;
   padding-bottom: 4px !important;
 }

@@ -30,8 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
-    this.dService.getMaxNum().subscribe(data => (this.maxNum = data));
-    this.authors = [{ AUTHORS: "AAA" }];
+    this.dService.getMaxNum().subscribe(data => (this.maxNum = data + 1));
 
     this.dService.readAuthors().subscribe(
       authors => {

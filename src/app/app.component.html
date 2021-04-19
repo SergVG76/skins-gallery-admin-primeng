@@ -126,7 +126,8 @@
         <div class="p-field p-col">
           <label for="author">Author</label>
           <p-dropdown id="author" [(ngModel)]="editSkin.AUTHOR" [options]="authors" optionLabel="AUTHORS"
-            [showClear]="editSkin.AUTHOR != ''" editable="true" baseZIndex=10000 appendTo="body"></p-dropdown>
+            optionValue="AUTHORS" [showClear]="editSkin.AUTHOR != ''" editable="true" baseZIndex=10000 appendTo="body">
+          </p-dropdown>
         </div>
       </div>
     </div>

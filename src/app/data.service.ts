@@ -22,12 +22,10 @@ export class DataService {
   }
 
   create(data): Observable<any> {
-    //    confirm(url + " create:" + data.SKIN_NAME);
     return this.http.post(url, data);
   }
 
   update(data): Observable<any> {
-    //    confirm(url + " update:" + data.SKIN_NAME);
     return this.http.put(url, data);
   }
 
@@ -45,5 +43,9 @@ export class DataService {
 
   getMaxNum(): Observable<any> {
     return this.http.get(`${urlutils}?action=maxnum`);
+  }
+
+  public readAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>(`${urlutils}?action=authors`);
   }
 }

@@ -21,7 +21,8 @@ import { InputNumberModule } from "primeng/inputnumber";
 import { DynamicDialogModule } from "primeng/dynamicdialog";
 import { CheckboxModule } from "primeng/checkbox";
 import { FileUploadModule } from "primeng/fileupload";
-import {DividerModule} from 'primeng/divider';
+import { DividerModule } from "primeng/divider";
+import { DropdownModule } from "primeng/dropdown";
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {DividerModule} from 'primeng/divider';
     ToolbarModule,
     DividerModule,
     FileUploadModule,
+    DropdownModule,
     ConfirmDialogModule
   ],
   declarations: [AppComponent],

@@ -31,6 +31,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
     this.dService.getMaxNum().subscribe(data => (this.maxNum = data));
+    this.authors = [{ AUTHORS: "AAA" }];
+
+    this.dService.readAuthors().subscribe(
+      authors => {
+        this.authors = authors;
+        console.log(authors);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
     this.readSkins();
   }
 
@@ -98,8 +110,7 @@ export class AppComponent implements OnInit {
 
       this.currentSkin = this.skins[ndx];
 
-      /*
-      this.dService.update(this.editSkin).subscribe(
+      this.dService.create(this.editSkin).subscribe(
         response => {
           console.log(response);
         },
@@ -107,7 +118,6 @@ export class AppComponent implements OnInit {
           console.log(error);
         }
       );
-*/
     } else {
       confirm("Update");
       const ndx = this.skins.indexOf(this.currentSkin);

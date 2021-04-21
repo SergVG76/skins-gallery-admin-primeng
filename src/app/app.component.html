@@ -50,8 +50,8 @@
 
   <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
     (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)" [virtualScroll]="false"
-    scrollHeight="flex" (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm"
-    #mainGrid>
+    scrollHeight="flex" (onRowDblclick)="onSkinDblClick($event)"
+    styleClass="p-datatable-gridlines p-datatable-sm p-datatable-striped" #mainGrid>
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="SKIN_NAME">

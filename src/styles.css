@@ -1,6 +1,8 @@
+html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: Tahoma;
 }
 
@@ -38,11 +40,4 @@ th {
   background: white;
   padding: 0px;
   padding-bottom: 48px; /* .p_toolbar height */
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }

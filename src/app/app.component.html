@@ -26,22 +26,25 @@
         class="toolbtn"
         [disabled]="-1 == currentIndex"
       ></button>
-      <label for="sID"> Current ID: &nbsp; </label>
-      <label id="sID"> {{currentIndex}}</label>
+      <!--label for="sID"> Current ID: &nbsp; </label>
+      <label id="sID"> {{currentIndex}}</label-->
     </span>
     </div>
 
     <div class="p-toolbar-group-right">
-      <span class="p-input-icon-left">
-      <i class="pi pi-filter"></i>
-      <input
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+        <i class="pi pi-filter"></i>
+      </span>
+        <input
         pInputText
         type="text"
         placeholder="Filter by name"
         [(ngModel)]="name"
-      />
-    </span>
-      <p-button icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" class="toolbtn"></p-button>
+        />
+        <button pButton icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" styleClass="p-button-warn p-button-warn toolbtn">
+        </button>
+      </div>
     </div>
   </p-toolbar>
 
@@ -50,33 +53,33 @@
     scrollHeight="flex" (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm"
     #mainGrid>
     <ng-template pTemplate="header">
-    <tr>
-      <th pSortableColumn="SKIN_NAME">
-        Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
-      </th>
-      <th pSortableColumn="LAST_DATE" style="width: 120px">
-        Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
-      </th>
-      <th pSortableColumn="AUTHOR" style="width: 200px">
-        Author <p-sortIcon field="AUTHOR"></p-sortIcon>
-      </th>
-      <th pSortableColumn="SKIN_LINK" style="width: 200px">
-        Download <p-sortIcon field="SKIN_LINK"></p-sortIcon>
-      </th>
-      <th pSortableColumn="BUY1" style="width: 80px">
-        Buy <p-sortIcon field="BUY1"></p-sortIcon>
-      </th>
-      <th pSortableColumn="RATING" style="width: 100px">
-        Rating <p-sortIcon field="RATING"></p-sortIcon>
-      </th>
-      <th pSortableColumn="IN_RATING" style="width: 100px">
-        Public <p-sortIcon field="IN_RATING"></p-sortIcon>
-      </th>
-      <th pSortableColumn="COMMENT" style="width: 130px">
-        Comment <p-sortIcon field="COMMENT"></p-sortIcon>
-      </th>
-    </tr>
-  </ng-template>
+      <tr>
+        <th pSortableColumn="SKIN_NAME">
+          Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
+        </th>
+        <th pSortableColumn="LAST_DATE" style="width: 120px">
+          Date <p-sortIcon field="LAST_DATE"></p-sortIcon>
+        </th>
+        <th pSortableColumn="AUTHOR" style="width: 200px">
+          Author <p-sortIcon field="AUTHOR"></p-sortIcon>
+        </th>
+        <th pSortableColumn="SKIN_LINK" style="width: 200px">
+          Download <p-sortIcon field="SKIN_LINK"></p-sortIcon>
+        </th>
+        <th pSortableColumn="BUY1" style="width: 80px">
+          Buy <p-sortIcon field="BUY1"></p-sortIcon>
+        </th>
+        <th pSortableColumn="RATING" style="width: 100px">
+          Rating <p-sortIcon field="RATING"></p-sortIcon>
+        </th>
+        <th pSortableColumn="IN_RATING" style="width: 100px">
+          Public <p-sortIcon field="IN_RATING"></p-sortIcon>
+        </th>
+        <th pSortableColumn="COMMENT" style="width: 130px">
+          Comment <p-sortIcon field="COMMENT"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
 
     <ng-template pTemplate="body" let-skin>
       <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">

@@ -41,3 +41,8 @@ th {
   padding: 0px;
   padding-bottom: 48px; /* .p_toolbar height */
 }
+
+.skin-hidden {
+  background-color: rgb(255, 233, 233) !important;
+  opacity: 50%;
+}

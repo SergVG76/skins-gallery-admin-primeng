@@ -82,9 +82,10 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-skin>
-      <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
+      <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)"
+        [ngClass]="{'skin-hidden': skin.IN_RATING==false}">
         <td>{{skin.SKIN_NAME}}</td>
-        <td style="width: 120px">{{skin.LAST_DATE}}</td>
+        <td style=" width: 120px">{{skin.LAST_DATE}}</td>
         <td style="width: 200px">{{skin.AUTHOR}}</td>
         <td style="width: 200px">
           <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>

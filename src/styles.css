@@ -30,35 +30,14 @@ th {
 
 .p-toolbar {
   padding: 6px;
-}
-
-htmlxxx {
-  height: 100%;
-}
-
-bodyxxx {
-  position: relative;
-  height: 100%;
-  min-height: 100%;
-  overflow: hidden;
-}
-
-#divxxx {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  height: 48px;
 }
 
 .container {
   height: 100%;
-  background: yellow;
-  padding: 100px;
-}
-
-* {
-  box-sizing: border-box;
+  background: white;
+  padding: 0px;
+  padding-bottom: 48px; /* .p_toolbar height */
 }
 
 html,

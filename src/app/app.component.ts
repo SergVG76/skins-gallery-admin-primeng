@@ -1,11 +1,4 @@
-//import { style } from "@angular/animations";
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  OnInit
-} from "@angular/core";
+import { Component, ViewChild, OnInit } from "@angular/core";
 import { PrimeNGConfig } from "primeng/api";
 import { DataService, Skin, Author } from "./data.service";
 import { ConfirmationService } from "primeng/api";

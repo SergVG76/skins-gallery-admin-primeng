@@ -47,9 +47,9 @@
 
   <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
     (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)" [virtualScroll]="false"
-    scrollHeight="calc(100% - 200px)" (onRowDblclick)="onSkinDblClick($event)"
-    styleClass="p-datatable-gridlines p-datatable-sm" #mainGrid>
-    <!--ng-template pTemplate="header">
+    scrollHeight="flex" (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm"
+    #mainGrid>
+    <ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="SKIN_NAME">
         Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
@@ -76,7 +76,7 @@
         Comment <p-sortIcon field="COMMENT"></p-sortIcon>
       </th>
     </tr>
-  </ng-template-->
+  </ng-template>
 
     <ng-template pTemplate="body" let-skin>
       <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">

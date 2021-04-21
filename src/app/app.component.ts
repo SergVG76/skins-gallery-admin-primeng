@@ -115,15 +115,18 @@ export class AppComponent implements OnInit {
       let newSkin = {};
       Object.assign(newSkin, this.editSkin);
       this.skins.push(newSkin);
-      this.mainGrid.clear();
+      //      this.mainGrid.clear();
 
-      this.mainGrid.scrollToVirtualIndex(ndx); // Quick scroll to added row
+      //      this.mainGrid.scrollToVirtualIndex(ndx); // Quick scroll to added row
+      //      this.mainGrid.scrollTo({ top: 150, left: 0 }); // Quick scroll to added row
+      console.log(this.skins.length);
 
       this.dService.create(this.editSkin).subscribe(
         response => {
           this.skins[ndx].ID = response;
           this.setCurrentSkin(this.skins[ndx], this.skins[ndx].ID);
           console.log("New ID: " + response + ", new grid index: " + ndx);
+          this.scrollToBottom(this.mainGrid);
         },
         error => {
           console.log(error);
@@ -187,12 +190,12 @@ export class AppComponent implements OnInit {
     this.submitted = false;
   }
 
-  /*
-  changeDropped(value) {
-    this.droppedDown = value;
-    console.log("droppedDown: " + value);
+  scrollToBottom(table: Table) {
+    let body = table.containerViewChild.nativeElement.getElementsByClassName(
+      "p-datatable-scrollable-body"
+    )[0];
+    body.scrollTop = body.scrollHeight;
   }
-*/
 
   enterKeyUp(event) {
     if (

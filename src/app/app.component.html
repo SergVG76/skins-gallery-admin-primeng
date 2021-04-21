@@ -1,6 +1,7 @@
-<p-toolbar>
-  <div class="p-toolbar-group-left">
-    <span class="p-buttonset">
+<div #container class="container">
+  <p-toolbar>
+    <div class="p-toolbar-group-left">
+      <span class="p-buttonset">
       <button
         pButton
         icon="pi pi-plus"
@@ -28,10 +29,10 @@
       <label for="sID"> Current ID: &nbsp; </label>
       <label id="sID"> {{currentIndex}}</label>
     </span>
-  </div>
+    </div>
 
-  <div class="p-toolbar-group-right">
-    <span class="p-input-icon-left">
+    <div class="p-toolbar-group-right">
+      <span class="p-input-icon-left">
       <i class="pi pi-filter"></i>
       <input
         pInputText
@@ -40,15 +41,15 @@
         [(ngModel)]="name"
       />
     </span>
-    <p-button icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" class="toolbtn"></p-button>
-  </div>
-</p-toolbar>
+      <p-button icon="pi pi-check" type="button" (click)="searchByName()" label="Apply" class="toolbtn"></p-button>
+    </div>
+  </p-toolbar>
 
-<p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
-  scrollHeight="800px" (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)"
-  (onRowDblclick)="onSkinDblClick($event)" styleClass="p-datatable-gridlines p-datatable-sm" #mainGrid
-  virtualScroll="true">
-  <ng-template pTemplate="header">
+  <p-table [value]="skins" selectionMode="single" [(selection)]="currentSkin" dataKey="ID" [scrollable]="true"
+    (onRowSelect)="onSkinSelect($event)" (onRowUnselect)="onSkinUnselect($event)" [virtualScroll]="false"
+    scrollHeight="calc(100% - 200px)" (onRowDblclick)="onSkinDblClick($event)"
+    styleClass="p-datatable-gridlines p-datatable-sm" #mainGrid>
+    <!--ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="SKIN_NAME">
         Name <p-sortIcon field="SKIN_NAME"></p-sortIcon>
@@ -75,41 +76,42 @@
         Comment <p-sortIcon field="COMMENT"></p-sortIcon>
       </th>
     </tr>
-  </ng-template>
+  </ng-template-->
 
-  <ng-template pTemplate="body" let-skin>
-    <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
-      <td>{{skin.SKIN_NAME}}</td>
-      <td style="width: 120px">{{skin.LAST_DATE}}</td>
-      <td style="width: 200px">{{skin.AUTHOR}}</td>
-      <td style="width: 200px">
-        <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
-      </td>
-      <td style="width: 80px; text-align: center;">
-        <a href="{{skin.BUY1}}" *ngIf="skin.BUY1">
-          <i class="pi pi-shopping-cart" style="color:var(--green-600);"></i>
-        </a>
-      </td>
-      <td style="white-space: nowrap; width: 100px;">
-        <star-rating [value]="skin.RATING/2" checkedcolor="var(--yellow-600)" uncheckedcolor="var(--bluegray-200)"
-          size="16px" readonly="true"></star-rating>
-      </td>
-      <td style="width: 100px; text-align: center;">
-        <i class="pi pi-check" *ngIf="skin.IN_RATING==1"></i>
-      </td>
-      <td style="width: 130px">{{skin.COMMENT}}</td>
-    </tr>
-  </ng-template>
-</p-table>
+    <ng-template pTemplate="body" let-skin>
+      <tr [pSelectableRow]="skin" (dblclick)="onSkinDblClick($event, skin)">
+        <td>{{skin.SKIN_NAME}}</td>
+        <td style="width: 120px">{{skin.LAST_DATE}}</td>
+        <td style="width: 200px">{{skin.AUTHOR}}</td>
+        <td style="width: 200px">
+          <a href="http://www.alphaskins.com/sfiles/skins/{{skin.SKIN_LINK}}">{{skin.SKIN_LINK}}</a>
+        </td>
+        <td style="width: 80px; text-align: center;">
+          <a href="{{skin.BUY1}}" *ngIf="skin.BUY1">
+            <i class="pi pi-shopping-cart" style="color:var(--green-600);"></i>
+          </a>
+        </td>
+        <td style="white-space: nowrap; width: 100px;">
+          <star-rating [value]="skin.RATING/2" checkedcolor="var(--yellow-600)" uncheckedcolor="var(--bluegray-200)"
+            size="16px" readonly="true"></star-rating>
+        </td>
+        <td style="width: 100px; text-align: center;">
+          <i class="pi pi-check" *ngIf="skin.IN_RATING==1"></i>
+        </td>
+        <td style="width: 130px">{{skin.COMMENT}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
 
-<p-dialog header="Skin Details" styleClass="p-fluid" [(visible)]="editDialog" [style]="{width: '700px'}" [modal]="true">
-  <ng-template pTemplate="content">
-    <p-divider></p-divider>
-    <div class="p-field">
-      <div class="p-formgrid p-grid">
-        <div class="p-field p-col">
-          <label for="name">Name</label>
-          <input
+  <p-dialog header="Skin Details" styleClass="p-fluid" [(visible)]="editDialog" [style]="{width: '700px'}"
+    [modal]="true">
+    <ng-template pTemplate="content">
+      <p-divider></p-divider>
+      <div class="p-field">
+        <div class="p-formgrid p-grid">
+          <div class="p-field p-col">
+            <label for="name">Name</label>
+            <input
             type="text"
             pInputText
             id="name"
@@ -117,54 +119,53 @@
             autofocus
             (keyup.enter)="enterKeyUp()"
           />
-        </div>
-        <div class="p-field p-col">
-          <label for="author">Author</label>
-          <p-dropdown id="author" [(ngModel)]="editSkin.AUTHOR" [options]="authors" optionLabel="AUTHORS"
-            optionValue="AUTHORS" [showClear]="editSkin.AUTHOR != ''" editable="true" appendTo="body"
-            [styleClass]="dlg-input">
-          </p-dropdown>
-        </div>
-        <div class="p-field p-col">
-          <label for="fname">File name</label>
-          <input
+          </div>
+          <div class="p-field p-col">
+            <label for="author">Author</label>
+            <p-dropdown id="author" [(ngModel)]="editSkin.AUTHOR" [options]="authors" optionLabel="AUTHORS"
+              optionValue="AUTHORS" editable="true" appendTo="body" [styleClass]="dlg-input">
+            </p-dropdown>
+          </div>
+          <div class="p-field p-col">
+            <label for="fname">File name</label>
+            <input
             type="text"
             pInputText
             id="fname"
             [(ngModel)]="editSkin.SKIN_LINK"
             (keyup.enter)="enterKeyUp()"
           />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="p-formgrid p-grid">
-      <div class="p-field p-col">
-        <label for="snum">Unique number: &nbsp; </label>
-        <label id="snum"> {{editSkin.SKIN_NUM}}</label>
-      </div>
-      <div class="p-field p-col">
-        <label for="sthumb"> Thumb name: &nbsp; </label>
-        <label id="sthumb">
+      <div class="p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="snum">Unique number: &nbsp; </label>
+          <label id="snum"> {{editSkin.SKIN_NUM}}</label>
+        </div>
+        <div class="p-field p-col">
+          <label for="sthumb"> Thumb name: &nbsp; </label>
+          <label id="sthumb">
           <a href="https://www.alphaskins.com/sshots/at{{editSkin.SKIN_NUM}}.jpg"
             >at{{editSkin.SKIN_NUM}}.jpg</a
           ></label>
-      </div>
-      <div class="p-field p-col">
-        <label for="screen">Screenshot: &nbsp; </label>
-        <label id="screen">
+        </div>
+        <div class="p-field p-col">
+          <label for="screen">Screenshot: &nbsp; </label>
+          <label id="screen">
           <a href="https://www.alphaskins.com/sshots/a{{editSkin.SKIN_NUM}}.png"
             >a{{editSkin.SKIN_NUM}}.png</a
           ></label>
+        </div>
       </div>
-    </div>
-    <p-checkbox name="inrating" [ngModel]="editSkin.IN_RATING==1" value="1" label="Published in the gallery"
-      [binary]="true" (onChange)="editSkin.IN_RATING = editSkin.IN_RATING == 1 ? 0 : 1">
-    </p-checkbox>
-  </ng-template>
+      <p-checkbox name="inrating" [ngModel]="editSkin.IN_RATING==1" value="1" label="Published in the gallery"
+        [binary]="true" (onChange)="editSkin.IN_RATING = editSkin.IN_RATING == 1 ? 0 : 1">
+      </p-checkbox>
+    </ng-template>
 
-  <ng-template pTemplate="footer">
-    <p-divider></p-divider>
-    <button
+    <ng-template pTemplate="footer">
+      <p-divider></p-divider>
+      <button
       pButton
       pRipple
       label="Cancel"
@@ -172,7 +173,7 @@
       class="p-button-danger"
       (click)="hideDialog()"
     ></button>
-    <button
+      <button
       pButton
       pRipple
       label="Save"
@@ -181,8 +182,9 @@
       [disabled]="(editSkin.SKIN_NAME=='')||(editSkin.SKIN_LINK=='')||(editSkin.AUTHOR=='')"
       (click)="saveSkin()"
     ></button>
-  </ng-template>
-</p-dialog>
+    </ng-template>
+  </p-dialog>
 
-<p-confirmDialog [style]="{width: '30em'}" acceptIcon="pi pi-thumbs-down" rejectButtonStyleClass="p-button-text">
-</p-confirmDialog>
+  <p-confirmDialog [style]="{width: '30em'}" acceptIcon="pi pi-thumbs-down" rejectButtonStyleClass="p-button-text">
+  </p-confirmDialog>
+</div>
